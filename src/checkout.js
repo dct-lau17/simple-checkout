@@ -26,3 +26,7 @@ Checkout.prototype.calcTotal = function() {
   }
  return total
 };
+
+Checkout.prototype.total = function() {
+  return "£" + this.calcTotal().toFixed(2)
+};

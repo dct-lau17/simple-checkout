@@ -8,6 +8,8 @@ describe('Checkout', function() {
   beforeEach(function(){
     items = {"cat food": 10, "dog food": 5, "Fred's food": 3.99 };
     checkout = new Checkout(items);
+    checkout.scan("cat food");
+    checkout.scan("dog food");
   });
 
   // As a shopper
@@ -23,8 +25,6 @@ describe('Checkout', function() {
   //  I would like to be able to scan items at the checkout
 
   it("can scan items at checkout", function() {
-    checkout.scan("cat food");
-    checkout.scan("dog food");
     expect(checkout.basket).toEqual(["cat food", "dog food"]);
   });
 
@@ -37,16 +37,14 @@ describe('Checkout', function() {
   // I would like to be able to see a total for all scanned items
 
   it("calculates the total for items in the basket", function() {
-    checkout.scan("cat food");
-    checkout.scan("dog food");
     expect(checkout.calcTotal()).toEqual(15)
   });
 
 //   As a shopper
 //  So that I know how much to pay
 //  I would like to see all prices correctly formatted (£xx.xx)
-
-
-
+  it("displays the formatted total for items in the basket", function() {
+    expect(checkout.total()).toEqual("£15.00")
+  });
 
 });
