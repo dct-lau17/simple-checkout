@@ -29,12 +29,24 @@ describe('Checkout', function() {
   });
 
   it("raises an error when item scanned is not available", function() {
-  expect(function(){ checkout.scan("garbage food");}).toThrowError('item is not available')
+    expect(function(){ checkout.scan("garbage food");}).toThrowError('item is not available');
   });
 
   // As a shopper
   // So that I know how much to pay
   // I would like to be able to see a total for all scanned items
+
+  it("calculates the total for items in the basket", function() {
+    checkout.scan("cat food");
+    checkout.scan("dog food");
+    expect(checkout.calcTotal()).toEqual(15)
+  });
+
+//   As a shopper
+//  So that I know how much to pay
+//  I would like to see all prices correctly formatted (£xx.xx)
+
+
 
 
 });

@@ -18,3 +18,11 @@ Checkout.prototype.scan = function(item) {
 Checkout.prototype.isAvailable = function(item) {
    return this.items[item];
 };
+
+Checkout.prototype.calcTotal = function() {
+  var total = 0
+  for(var i= 0; i< this.basket.length; i++) {
+    total += this.items[this.basket[i]]
+  }
+ return total
+};
